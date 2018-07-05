@@ -11,19 +11,16 @@
 <h1>PHP1</h1>
 
 <?php
+include __DIR__ . '/functions.php';
 
-function maxi ($x, $y)
-{
-    if ($x > $y) {
-        $max = $x;
-    } else {
-        $max = $y;
-    }
-    return $max;
-}
+$a = 5;
+$b = false;
+const A = null ;
+const B = false;
 
-echo maxi(4,5);
 
+var_dump(var_dump((int) A));
+//var_dump(var_dump((int) B));
 
 ?>
 
