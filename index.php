@@ -12,17 +12,7 @@
 
 <?php
 
-function maxi ($x, $y)
-{
-    if ($x > $y) {
-        $max = $x;
-    } else {
-        $max = $y;
-    }
-    return $max;
-}
 
-echo maxi(4,5);
 
 
 ?>
