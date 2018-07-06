@@ -101,6 +101,7 @@
 <br> <br>
 
 <?php
+
 include __DIR__ . '/functions.php';
 
 $a = 2;
@@ -111,6 +112,7 @@ $D = Discriminant($a, $b, $c);
 echo '<br> <p>Решение квадратного уравнения</p> <br>' . $a . 'x^2+' . $b . 'x+' . $c . '<br>';
 echo 'a=' . $a . '<br>b=' . $b . '<br>c=' . $c . '<br>D=' . $D;
 
+/** Main check Discriminant and return calculated results */
 if ($D > 0) {
     $x1 = ((-$b + sqrt($D)) / (2 * $a));
     $x2 = ((-$b - sqrt($D)) / (2 * $a));
@@ -121,6 +123,25 @@ if ($D > 0) {
 } else {
     echo '<br> <p>Корней нет!</p>';
 }
+
+
+/** Объявляем переменную $inc и присваеваем ей значение функции inlude
+ * (в данном случае оператор include используется как функция) */
+$inc = include __DIR__ . '/data.txt';
+var_dump($inc);
+
+/** Так же, можно значение функции include передать в функцию echo, которая выводит даное значение  браузер
+ в общем случае, функция возвращает еденицу (int)1, но когда это значение передается в функцию echo оно не явно приводится
+ * к типу (str) */
+echo include __DIR__. '/test.txt';
+
+echo '<br><br>';
+
+
+echo GenderDetection('');
+
+
+
 
 ?>
 
