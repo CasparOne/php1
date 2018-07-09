@@ -8,14 +8,25 @@
     <title>Document</title>
 </head>
 <body>
-<h1>PHP1</h1>
+<h1>PHP1 Урок 4</h1>
+<form action="/upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="myimage">
+    <button type="submit">Загрузить</button>
+</form>
 
 <?php
+$list = scandir(__DIR__ . '/images');
+$list = array_diff($list, ['.','..']);
+foreach ($list as $img) {
+    ?>
+<img src="/images/<?php echo $img; ?>" height="200">
 
+    <?php
 
-
+}
 
 ?>
+
 
 
 </body>
