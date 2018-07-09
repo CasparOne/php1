@@ -15,17 +15,49 @@ include __DIR__ . '/functions.php';
 <pre>
 
     <form action="/index.php" method="GET">
-        <input type="number" name="firstN">
-        <input type="radio" name="subt" value="1">Вычитание
-        <input type="radio" name="summ" value="1">Сложение
-        <input type="radio" name="divis" value="1">Деление
-        <input type="radio" name="multipl" value="1">Умножение
-        <input type="number" name="secondN">
+        <input type="text" name="firstN">
+        <input type="radio" name="oper" value="-">Вычитание
+        <input type="radio" name="oper" value="+">Сложение
+        <input type="radio" name="oper" value="/">Деление
+        <input type="radio" name="oper" value="*">Умножение
+        <input type="text" name="secondN">
         <button type="submit"> = </button>
     </form>
 <?php
 
-var_dump($_GET);
+$firstN = $_GET['firstN'];
+$secondN = $_GET['secondN'];
+$operation = $_GET['oper'];
+//var_dump($_GET);
+
+
+if (isset($_GET) && !empty($_GET)){
+    if ((bool)$firstN && (bool)$secondN) {
+        if (isset($operation) && $operation === '-') {
+            $res = Subtraction($firstN, $secondN);
+            echo 'Резльтат: ' . $res;
+        } elseif (isset($operation) && $operation === '+' ) {
+            $res = Summarry($firstN, $secondN);
+            echo 'Резльтат: ' . $res;
+        } elseif (isset($operation) && $operation === '/') {
+            $res =  Division($firstN, $secondN);
+            echo 'Резльтат: ' . $res;
+            var_dump($res);
+        } elseif (isset($operation) && $operation === '*') {
+            $res = Multiple($firstN, $secondN);
+            echo 'Резльтат: ' . $res;
+        } else {
+            echo 'Ошибка ввода! Повторите ввод и выберите правильную операцию';
+        }
+    } else {
+        echo 'Введите корректные значения для выполнения операции';
+    }
+
+
+}
+
+
+
 ?>
 
 </pre>

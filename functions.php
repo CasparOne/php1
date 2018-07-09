@@ -1,16 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vvolo
- * Date: 07.07.2018
- * Time: 14:28
- */
+
+
+/** Функция вычитания. Выполняется замена ',' на '.' Таким образом, пользователь может ввести дюбой разделитель*/
 function Subtraction($first, $second)
 {
-    if (!is_int($first) || !is_int($second) || !is_float($first) || !is_float($second)) {
-        unset($res);
-        return $error = 1;
-    }
+    $first = str_replace(',', '.', $first);
+    $second = str_replace(',', '.', $second);
+    return ((float)$first - (float)$second);
+}
 
-    return $first - $second;
+/** Функция выполняет суммирования 2х числе, приведенных к типу float. */
+function Summarry($first, $second)
+{
+    $first = str_replace(',', '.', $first);
+    $second = str_replace(',', '.', $second);
+    return ((float)$first + (float)$second);
+}
+
+/** Функиця выполняет деление 2х числе. */
+function Division($first, $second)
+{
+    $first = str_replace(',', '.', $first);
+    $second = str_replace(',', '.', $second);
+        return ((float)$first / (float)$second);
+
+}
+
+/** Функция умножения 2х числе. */
+function Multiple($first, $second)
+{
+    $first = str_replace(',', '.', $first);
+    $second = str_replace(',', '.', $second);
+    return ((float)$first * (float)$second);
 }
