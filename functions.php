@@ -1,24 +1,19 @@
 <?php
-/** Функция GetRecords читает файл и возвращает массив записей гостевой книги */
-function GetRecords($path)
+function ReadDBFile($dbPath)
 {
-    if (!is_readable($path)){
-        return false;
-    } else {
-        $ar = file($path);
-        return $ar;
-    }
+    return true;
 }
 
-/** Функция возвращает массив, включающий новую добавленную строку */
-function AppRecord($path)
+
+function Auth($login, $password, $dbPath)
 {
-    if (!GetRecords($path)){
-        return false;
-    } else {
-        $newRecord = implode($_POST, ' ');
-        $remaning = GetRecords($path);
-        $remaning[] = "\n" . $newRecord;
-        return $remaning;
+    foreach (file($dbPath) as $arrElem) {
+        $arrElem = explode(' ', $arrElem);
+        var_dump($arrElem);
+        if (($_POST['login'] == str_replace("\n", '', $arrElem[3])) && ($_POST['password'] == str_replace("\n", '', $arrElem[4]))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

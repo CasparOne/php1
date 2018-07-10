@@ -1,4 +1,5 @@
 <?php
+include __DIR__ . '/SESSION.php';
 //var_dump($_FILES);
 $formName = 'myimage';
 $fileSize = 5 * (2 ** 20) ; //размер файла 5 мегабат. Значение (int)5 можно поменять "по вкусу"
@@ -15,4 +16,4 @@ if (isset($_FILES[$formName])) {
         ?><br> <a href="/index.php"><< НАЗАД</a> <?php
     }
 }
-?>
+

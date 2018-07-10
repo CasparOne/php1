@@ -1,3 +1,10 @@
+<?php
+include __DIR__ . '/SESSION.php';
+include __DIR__ . '/functions.php';
+if (!$_SESSION['loggedin'] == true) {
+    header('Location:http://php1.local/login.php');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,7 +32,6 @@ foreach ($list as $img) {
 
 }
 ?>
-
 
 
 </body>
