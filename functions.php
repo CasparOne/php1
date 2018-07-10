@@ -1,19 +1,29 @@
 <?php
-function ReadDBFile($dbPath)
+echo '<pre>';
+function getUserList($datafile)
 {
-    return true;
+    $dataset = file($datafile);
+    foreach ($dataset as $arrElmnt) {
+        $index = explode(';', trim($arrElmnt))[3];
+        $value = explode(';', trim($arrElmnt))[4];
+        $logPass[$index] = $value;
+    }
+    return $logPass;
 }
 
-
-function Auth($login, $password, $dbPath)
+function existsUser($login, $datafile)
 {
-    foreach (file($dbPath) as $arrElem) {
-        $arrElem = explode(' ', $arrElem);
-        var_dump($arrElem);
-        if (($_POST['login'] == str_replace("\n", '', $arrElem[3])) && ($_POST['password'] == str_replace("\n", '', $arrElem[4]))) {
-            return true;
-        } else {
-            return false;
-        }
+    return array_key_exists(trim($login), getUserList($datafile));
+}
+
+function checkPassword($login, $password, $datafile)
+{
+    foreach (getUserList($datafile) as $key => $val) {
+        $credent[] = $key . ';' . $val;
+    }
+    if (in_array($login . ';' . $password, $credent)) {
+        return true;
+    } else {
+        return false;
     }
 }

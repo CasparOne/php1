@@ -1,19 +1,7 @@
 <?php
-include __DIR__ . '/SESSION.php';
-include __DIR__ . '/functions.php';
-$dbPath = __DIR__ . '/data.txt';
-echo '<pre>';
+$datafile = __DIR__ . '/data.txt';
 $login = $_POST['login'];
 $password = $_POST['password'];
-//var_dump($credentials = $_POST);
-
-//ar_dump(file($dbPath));
-
-if (Auth($login, $password, $dbPath)) {
-    echo 'Pass!!';
-} else {
-    echo 'Wrong login/password';
-}
 
 
 ?>
@@ -26,12 +14,12 @@ if (Auth($login, $password, $dbPath)) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body><br><br><br><br>
+<body>
 <div align="center">
-    <form method="post" action="/login.php">
-        <input type="login" name="login">
-        <input type="password" name="password">
-        <button type="submit">Login Me</button>
+    <form action="login.php" method="post">
+        Login:<input name="login"><br><br>
+        Password:<input name="password"><br><br>
+        <button name="submit" type="submit">Войти</button>
     </form>
 </div>
 </body>

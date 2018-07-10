@@ -1,9 +1,12 @@
 <?php
-include __DIR__ . '/SESSION.php';
-include __DIR__ . '/functions.php';
-if (!$_SESSION['loggedin'] == true) {
+session_start();
+if (isset($_SESSION['loged'])) {
+    $_SESSION['loged'] = 0;
+}
+if ($_SESSION['loged'] != 1) {
     header('Location:http://php1.local/login.php');
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +29,7 @@ $list = scandir(__DIR__ . '/images');
 $list = array_diff($list, ['.','..']);
 foreach ($list as $img) {
     ?>
-<img src="/images/<?php echo $img; ?>" height="200">
+    <img src="/images/<?php echo $img; ?>" height="200">
 
     <?php
 

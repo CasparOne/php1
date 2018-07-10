@@ -1,14 +1,9 @@
 <?php
-$dbPath = __DIR__ . '/data.txt';
-echo '<pre>';
-$login = $_POST['login'];
-$password = $_POST['password'];
+include __DIR__ . '/functions.php';
+$datafile = __DIR__ . '/data.txt';
+$login = 'koshka@gmail.ru';
+$password = '123';
+var_dump($login, $password, $datafile);
 
-var_dump($f = file($dbPath));
+var_dump(checkPassword($login, $password, $datafile));
 
-foreach ($f as $strArr) {
-    $strArr = explode(' ', $strArr);
-    var_dump($strArr);
-
-
-}
