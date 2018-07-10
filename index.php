@@ -11,7 +11,7 @@
 <h1>PHP1 Урок 4</h1>
 <form action="/upload.php" method="post" enctype="multipart/form-data">
     <input type="file" name="myimage">
-    <button type="submit">Загрузить</button>
+    <button type="submit">Загрузить</button><br><br>
 </form>
 
 <?php
@@ -24,7 +24,6 @@ foreach ($list as $img) {
     <?php
 
 }
-
 ?>
 
 

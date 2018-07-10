@@ -5,12 +5,20 @@ function GetRecords($path)
     if (!is_readable($path)){
         return false;
     } else {
-        return $line = file($path);
+        $ar = file($path);
+        return $ar;
     }
 }
 
-/** Функция добавляет запись о новом госте в файл-БД гостей */
-function AppRecord()
+/** Функция возвращает массив, включающий новую добавленную строку */
+function AppRecord($path)
 {
-    return true;
+    if (!GetRecords($path)){
+        return false;
+    } else {
+        $newRecord = implode($_POST, ' ');
+        $remaning = GetRecords($path);
+        $remaning[] = "\n" . $newRecord;
+        return $remaning;
+    }
 }

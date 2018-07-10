@@ -14,13 +14,16 @@
 <?php
 include __DIR__ . '/functions.php';
 $path = __DIR__ . '/data.txt';
-
 $records = GetRecords($path);
-foreach ($records as $eachrecord) {
-    ?>
-    <br> <?php echo $eachrecord;
-}
 
+if (!$records) {
+    echo 'Error!';
+} else {
+    foreach ($records as $oneRecord) {
+        ?>
+        <br> <?php echo $oneRecord;
+    }
+}
 ?>
 <br><br><br><br>
 <form name="newRecord" action="/app.php" method="post">
@@ -30,6 +33,10 @@ foreach ($records as $eachrecord) {
     E-mail: <input type="email" name="email">
     <br><button type="submit">Отправить</button>
 </form>
+
+<?php
+
+?>
 
 
 
