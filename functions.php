@@ -1,4 +1,5 @@
 <?php
+/** Функция возвращает массив [имя пользователя][пароль] */
 function getUserList()
 {
     $path = __DIR__ . '/data.txt';
@@ -15,6 +16,7 @@ function getUserList()
     return $usrPass;
 }
 
+/** Функция проверяет зарегистрирован пользователь или нет */
 function existsUser($login)
 {
     if (!isset($login) && '' == $login) {
@@ -31,6 +33,8 @@ function existsUser($login)
     }
 }
 
+/** Функция проверяет введеный пароль с хешем пароля, который хранится в базе (в файле) ЕСЛИ совпадает - возвращает true
+ * ИНАЧЕ возвращает false*/
 function checkPassword($login, $password)
 {
     $usrPass = getUserList();
@@ -45,6 +49,7 @@ function checkPassword($login, $password)
 
 }
 
+/** функция возвращает имя пользователя (логин), под которым вошел текущий пользователь. */
 function getCurrentUser()
 {
     if (!$_SESSION || ($_SESSION['usr'] == null)) {
