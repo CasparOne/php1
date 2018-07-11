@@ -1,6 +1,5 @@
 <?php
 session_start();
-//var_dump($_FILES);
 $formName = 'myimage';
 $fileSize = 5 * (2 ** 20) ; //размер файла 5 мегабат. Значение (int)5 можно поменять "по вкусу"
 

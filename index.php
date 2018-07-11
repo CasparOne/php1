@@ -1,12 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['loged'])) {
-    $_SESSION['loged'] = 0;
-}
-if ($_SESSION['loged'] != 1) {
+if (!isset($_SESSION) || null == $_SESSION['usr']) {
+    $_SESSION['usr'] = null;
     header('Location:http://php1.local/login.php');
 }
-
+include __DIR__ . '/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,24 +16,20 @@ if ($_SESSION['loged'] != 1) {
     <title>Document</title>
 </head>
 <body>
-<h1>PHP1 Урок 4</h1>
+<h1>PHP1 Урок 5</h1>
+<h3>Вы вошли, как <?php echo ucfirst(getCurrentUser()); ?>!</h3>
 <form action="/upload.php" method="post" enctype="multipart/form-data">
     <input type="file" name="myimage">
     <button type="submit">Загрузить</button><br><br>
 </form>
-
 <?php
 $list = scandir(__DIR__ . '/images');
 $list = array_diff($list, ['.','..']);
 foreach ($list as $img) {
     ?>
     <img src="/images/<?php echo $img; ?>" height="200">
-
     <?php
-
 }
 ?>
-
-
 </body>
 </html>

@@ -1,29 +1,58 @@
 <?php
-echo '<pre>';
-function getUserList($datafile)
+function getUserList()
 {
-    $dataset = file($datafile);
-    foreach ($dataset as $arrElmnt) {
-        $index = explode(';', trim($arrElmnt))[3];
-        $value = explode(';', trim($arrElmnt))[4];
-        $logPass[$index] = $value;
+    $path = __DIR__ . '/data.txt';
+    if (!is_file($path) and !is_readable($path)) {
+        $usrPass = null;
+    } else {
+        $arr = file($path);
+        foreach ($arr as $val) {
+            $usr = explode(';', trim($val))[0];
+            $pass = explode(';', trim($val))[1];
+            $usrPass[$usr] = $pass;
+        }
     }
-    return $logPass;
+    return $usrPass;
 }
 
-function existsUser($login, $datafile)
+function existsUser($login)
 {
-    return array_key_exists(trim($login), getUserList($datafile));
-}
-
-function checkPassword($login, $password, $datafile)
-{
-    foreach (getUserList($datafile) as $key => $val) {
-        $credent[] = $key . ';' . $val;
+    if (!isset($login) && '' == $login) {
+        return false;
     }
-    if (in_array($login . ';' . $password, $credent)) {
+    if (!getUserList()) {
+        return false;
+    }
+    $usrPass = getUserList();
+    if (array_key_exists($login, $usrPass)) {
         return true;
     } else {
         return false;
+    }
+}
+
+function checkPassword($login, $password)
+{
+    $usrPass = getUserList();
+    if (!existsUser($login)) {
+        return false;
+    }
+    foreach ($usrPass as $key => $value) {
+        $arrLogPass[] = $key . ';' . $value;
+    }
+    if (!in_array($login . ';' . $password, $arrLogPass)) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function getCurrentUser()
+{
+    if (!$_SESSION || ($_SESSION['usr'] == null)) {
+        return null;
+    } else {
+        return $_SESSION['usr'];
     }
 }
