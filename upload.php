@@ -7,7 +7,7 @@ if (isset($_FILES[$formName])) {
     if (0 == $_FILES[$formName]['error'] &&
         ($_FILES[$formName]['type'] == 'image/jpeg' || $_FILES[$formName]['type'] == 'image/png') &&
         $_FILES[$formName]['size'] <=$fileSize) {
-        move_uploaded_file($_FILES[$formName]['tmp_name'], __DIR__ . '/images/' . $_FILES['myimage']['name']);
+        move_uploaded_file($_FILES[$formName]['tmp_name'], __DIR__ . '/images/' . $_FILES['myimage']['name'] . rand(00, 99));
         header('Location: http://php1.local/');
     }
     else {

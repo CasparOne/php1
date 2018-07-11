@@ -37,13 +37,10 @@ function checkPassword($login, $password)
     if (!existsUser($login)) {
         return false;
     }
-    foreach ($usrPass as $key => $value) {
-        $arrLogPass[] = $key . ';' . $value;
-    }
-    if (!in_array($login . ';' . $password, $arrLogPass)) {
-        return false;
-    } else {
+    if (password_verify($password, $usrPass[$login])) {
         return true;
+    } else {
+        return false;
     }
 
 }
