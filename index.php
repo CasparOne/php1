@@ -18,7 +18,7 @@ class TextFile
     /** Сохраняет готовый контент в файл */
     public function save()
     {
-        file_put_contents($this->path, $this->readyData);
+        file_put_contents($this->path, implode("\n", $this->readyData));
     }
 }
 
@@ -31,7 +31,7 @@ class GuestBook extends TextFile
     /** Получает значения в масив из файла */
     public function getData()
     {
-        $this->dataArr = file($this->path);
+        $this->dataArr = file($this->path, FILE_IGNORE_NEW_LINES);
         return $this->dataArr;
     }
 
@@ -40,15 +40,16 @@ class GuestBook extends TextFile
     {
         $this->text = $text;
         $this->getData();
-        $this->dataArr[] = "\n" . $text;
+        $this->dataArr[] = $text;
         return $this->dataArr;
     }
 }
 
-echo '<pre>';
+//echo '<pre>';
 $path = __DIR__ . '/data.txt';
 $gb = new GuestBook($path);
-$gb->readyData = $gb->append('Петров;Инокентий;Филипович;d11114@yan223.ru;79153521244');
-$gb->save();
+//$gb->readyData = $gb->append('Петров;Инокентий;Филипович;d11114@yan223.ru;79153521244');
+//$gb->save();
 var_dump($gb->getData());
+
 
