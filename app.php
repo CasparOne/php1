@@ -5,9 +5,8 @@ $newArray = AppRecord($path);
 if (!$newArray) {
     echo 'Error!';
 } else {
-file_put_contents($path, $newArray);
+    file_put_contents($path, implode("\n", $newArray));
 }
-
 header('Location: http://php1.local/guestbook.php');
 
 

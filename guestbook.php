@@ -10,22 +10,13 @@
 <body>
 <h1>Guest book!</h1>
 <br><br><br>
-
 <?php
 include __DIR__ . '/functions.php';
 $path = __DIR__ . '/data.txt';
 $records = GetRecords($path);
-
-if (!$records) {
-    echo 'Error!';
-} else {
-    foreach ($records as $oneRecord) {
-        ?>
-        <br> <?php echo $oneRecord;
-    }
-}
 ?>
 <br><br><br><br>
+<pre>
 <form name="newRecord" action="/app.php" method="post">
     Имя:<input type="text" name="firstname">
     Фамилия: <input type="text" name="lastname">
@@ -33,12 +24,14 @@ if (!$records) {
     E-mail: <input type="email" name="email">
     <br><button type="submit">Отправить</button>
 </form>
-
 <?php
-
+if (!$records) {
+    echo 'Error!';
+} else {
+    echo $oneLine = implode("\n", $records); // способ, после вопроса " В какой момент появляется симввол перевода строки
+    //foreach ($records as $oneRecord) { // старый не актуальный способ вывода строк.
+    //}
+}
 ?>
-
-
-
 </body>
 </html>
