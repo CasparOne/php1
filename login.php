@@ -1,7 +1,7 @@
 <?php
 $datafile = __DIR__ . '/data.txt';
-$login = $_POST['login'];
-$password = $_POST['password'];
+$login = $_POST['login'] ?? null;
+$password = $_POST['password'] ?? null;
 $errMsg = null;
 include __DIR__ . '/functions.php';
 switch (true) {
@@ -9,7 +9,7 @@ switch (true) {
         $errMsg = 'Не верный ввод!';
         break;
     case (!isset($_POST['submit']) && ($login == '' || $password == '')):
-        unset($errMsg);
+        $errMsg = null;
         break;
     case (checkPassword($login, $password)):
         session_start();
@@ -23,7 +23,7 @@ switch (true) {
         $errMsg = 'Не верный пасс!';
         break;
     default:
-        unset($errMsg);
+        $errMsg = null;
         break;
 }
 ?>

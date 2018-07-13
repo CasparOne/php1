@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION) || null == $_SESSION['usr']) {
+if (!isset($_SESSION['usr']) || null == $_SESSION['usr']) {
     $_SESSION['usr'] = null;
     header('Location:http://php1.local/login.php');
 }
@@ -25,11 +25,8 @@ include __DIR__ . '/functions.php';
 <?php
 $list = scandir(__DIR__ . '/images');
 $list = array_diff($list, ['.','..']);
-foreach ($list as $img) {
-    ?>
-    <img src="/images/<?php echo $img; ?>" height="200">
-    <?php
-}
-?>
+foreach ($list as $img) { ?>
+    <a href="/images <?php echo '/' . $img ?>"><img src="/images/<?php echo $img; ?>" height="200"></a>
+<?php } ?>
 </body>
 </html>

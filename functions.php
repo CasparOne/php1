@@ -15,7 +15,6 @@ function getUserList()
     }
     return $usrPass;
 }
-
 /** Функция проверяет зарегистрирован пользователь или нет */
 function existsUser($login)
 {
@@ -32,7 +31,6 @@ function existsUser($login)
         return false;
     }
 }
-
 /** Функция проверяет введеный пароль с хешем пароля, который хранится в базе (в файле) ЕСЛИ совпадает - возвращает true
  * ИНАЧЕ возвращает false*/
 function checkPassword($login, $password)
@@ -46,9 +44,7 @@ function checkPassword($login, $password)
     } else {
         return false;
     }
-
 }
-
 /** функция возвращает имя пользователя (логин), под которым вошел текущий пользователь. */
 function getCurrentUser()
 {
