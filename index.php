@@ -15,10 +15,10 @@ class TextFile
         $this->path = $path;
     }
 
-    /** Сохраняет готовый контент в файл */
+    /** Метод сохраняет содержимое переменной $readyData в файл */
     public function save()
     {
-        file_put_contents($this->path, implode("\n", $this->readyData));
+        file_put_contents($this->path, $this->readyData);
     }
 }
 
@@ -43,13 +43,19 @@ class GuestBook extends TextFile
         $this->dataArr[] = $text;
         return $this->dataArr;
     }
+
+    public function save()
+    {
+        $this->readyData = implode("\n", $this->getData());
+        parent::save();
+    }
 }
 
-//echo '<pre>';
+echo '<pre>';
 $path = __DIR__ . '/data.txt';
 $gb = new GuestBook($path);
-//$gb->readyData = $gb->append('Петров;Инокентий;Филипович;d11114@yan223.ru;79153521244');
-//$gb->save();
-var_dump($gb->getData());
+$gb->readyData = $gb->append('Петров;Инокентий;Филипович;d11114@yan223.ru;79153521244');
+$gb->save();
+var_dump($gb->readyData);
 
 
