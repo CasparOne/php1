@@ -1,7 +1,3 @@
-<?php
-include __DIR__ . '/functions.php';
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,54 +8,9 @@ include __DIR__ . '/functions.php';
     <title>Document</title>
 </head>
 <body>
-<pre>
+<a href="/calc_simple.php"><h5>Простой калькулятор из п. 1.2</h5></a>
+<a href="/calc_up.php"><h5>Улучшенный калькулятор из п. 1.3*</h5></a>
+<a href="/galary.php"><h5>Галерея из п. 2</h5></a>
 
-    <form action="/index.php" method="GET">
-        <input type="text" name="firstN">
-        <input type="radio" name="oper" value="-">Вычитание
-        <input type="radio" name="oper" value="+">Сложение
-        <input type="radio" name="oper" value="/">Деление
-        <input type="radio" name="oper" value="*">Умножение
-        <input type="text" name="secondN">
-        <button type="submit"> = </button>
-    </form>
-<?php
-
-$firstN = $_GET['firstN'];
-$secondN = $_GET['secondN'];
-$operation = $_GET['oper'];
-//var_dump($_GET);
-
-
-if (isset($_GET) && !empty($_GET)){
-    if ((bool)$firstN && (bool)$secondN) {
-        if (isset($operation) && $operation === '-') {
-            $res = Subtraction($firstN, $secondN);
-            echo 'Резльтат: ' . $res;
-        } elseif (isset($operation) && $operation === '+' ) {
-            $res = Summarry($firstN, $secondN);
-            echo 'Резльтат: ' . $res;
-        } elseif (isset($operation) && $operation === '/') {
-            $res =  Division($firstN, $secondN);
-            echo 'Резльтат: ' . $res;
-            var_dump($res);
-        } elseif (isset($operation) && $operation === '*') {
-            $res = Multiple($firstN, $secondN);
-            echo 'Резльтат: ' . $res;
-        } else {
-            echo 'Ошибка ввода! Повторите ввод и выберите правильную операцию';
-        }
-    } else {
-        echo 'Введите корректные значения для выполнения операции';
-    }
-
-
-}
-
-
-
-?>
-
-</pre>
 </body>
 </html>

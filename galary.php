@@ -7,23 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<?php
+$imgDir = '/images/';
+$gh = '/image.php';
+$imgList = ['42' => 'Hydrangeas.jpg', '43' => 'Jellyfish.jpg', '44' => 'Desert.jpg', '45' => 'Koala.jpg'];
+?>
 <body>
+<h2>Галерея задание п. 2.</h2>
 <table>
     <tr>
-        <td>
-            <a href="/image.php?id=42"><img src="Desert.jpg" height="25%" align="center"></a>
-        </td>
-        <td>
-            <a href="/image.php?id=43"><img src="Hydrangeas.jpg" height="25%" align="center"></a>
-        </td>
-        <td>
-            <a href="/image.php?id=44"><img src="Jellyfish.jpg" height="25%" align="center"></a>
-        </td>
-        <td>
-            <a href="/image.php?id=45"><img src="Koala.jpg" height="25%" align="center"></a>
-        </td>
+        <?php foreach ($imgList as $id => $imgNname) {
+            ?>
+            <td>
+            <a href="<?php echo $gh . '?' . 'id=' . $id ?>">
+                <img src=" <?php echo $imgDir . $imgNname ?>" height="25%" align="center"></a>
+            </td>
+            <?php
+        }
+        ?>
     </tr>
 </table>
-
 </body>
 </html>
