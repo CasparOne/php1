@@ -15,7 +15,6 @@ class Uploader
      * возвращает false*/
     public function upload()
     {
-        var_dump($_FILES);
         if ($this->isUploaded()) {
             move_uploaded_file($_FILES[$this->formName]['tmp_name'],
                 __DIR__ . '/images/' . strtolower($_FILES[$this->formName]['name']));
@@ -30,8 +29,8 @@ class Uploader
         return is_uploaded_file($_FILES[$this->formName]['tmp_name']);
     }
 }
-
 ?>
+
 <form action="/Uploader.php" method="post" enctype="multipart/form-data">
     <input type="file" name="upfile">
     <button type="submit">Upload</button>
