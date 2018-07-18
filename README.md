@@ -1,2 +1,2 @@
-/index.php - гостевая книга
+/guestbook.php - гостевая книга
 /upload.php - класс 
