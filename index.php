@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/classes/GuestBook.php';
 $gb = new GuestBook();
-$gbr = new GuestBookRecord('Привет мендвед');
 ?>
 
 <!doctype html>
@@ -21,7 +20,8 @@ $gbr = new GuestBookRecord('Привет мендвед');
     <?php
 }
 
-$gb->addRecord('Пятая строка');
+$gbr = new GuestBookRecord(rand(100, 999) . ' строка');
+$gb->addRecord($gbr);
 $gb->saveRecords();
 
 
