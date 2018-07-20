@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Класс UserLogin. Метод getLogin() возвращает значение типа UserLogin
+ */
 class UserLogin
 {
     protected $usrLogin;

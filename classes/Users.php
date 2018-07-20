@@ -1,6 +1,10 @@
 <?php
 require __DIR__ . '/CurrUser.php';
 
+/**
+ * Класс описывает обьект Users. свойство $credentials содержит массив, где каждый элемент является строкой
+ * вида логин;пароль
+ */
 class Users
 {
     protected $credentials;
@@ -30,15 +34,6 @@ class Users
     }
 
     public function getCurrUser()
-    {
-        if (!$_SESSION || ($_SESSION['usr'] == null)) {
-            return null;
-        } else {
-            return $_SESSION['usr'];
-        }
-    }
-
-    public function getCurUser()
     {
         if (!$_SESSION || ($_SESSION['usr'] == null)) {
             return null;

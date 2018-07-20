@@ -1,19 +1,21 @@
 <?php
 
-
+/**
+ * Класс Image метод @getImgList возвращает массив,
+ * элементы которого являются названия файлов в директории
+ */
 class Image
 {
-    protected $listOfImg;
+    protected $img;
 
-    public function __construct()
+    public function __construct($img)
     {
-        $this->listOfImg = array_diff(scandir(__DIR__ . '/../images'), ['.', '..']);
-
+        $this->img = $img;
     }
 
-    public function getImgList()
+    public function getImg()
     {
-        return $this->listOfImg;
+        return $this->img;
     }
 
 
